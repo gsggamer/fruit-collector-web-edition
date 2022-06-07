@@ -17,3 +17,19 @@ canvas {
 	border: 1.5px solid #ccc;
 	border-radius: 5px;
 }
+
+#instructions {
+	padding: 5px;
+	margin: 15px;
+	width: 370px;
+}
+#instructions > h3 {
+	margin-bottom: 10px;
+}
+#instructions .arrow {
+	display: inline-block;
+	margin: 3px;
+}
+#instructions > ul > li {
+	margin: 5px;
+}
