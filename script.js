@@ -9,7 +9,7 @@ let person = {
 	speed: 3.5
 }
 let fruit = {
-	x: Math.random() * cnv.width - 30, y: Math.random() * cnv.height - 30,
+	x: Math.floor(Math.random() * (cnv.width)), y: Math.floor(Math.random() * (cnv.height)),
 	w: 30, h: 30,
 	color: "#f55",
 	hiper: false, hiperSort: Math.floor(Math.random() * 13)
