@@ -1,12 +1,12 @@
 let cnv = document.querySelector("canvas")
 let ctx = cnv.getContext("2d")
-let htmlBody = document.querySelector("body")
 
 let person = {
-	x: 60, y: (cnv.height / 2) - 15,
+	x: 90, y: (cnv.height / 2) - 15,
 	w: 30, h: 30,
 	color: "#55f",
-	wLeft: false, wRight: false, wUp: false, wDown: false
+	wLeft: false, wRight: false, wUp: false, wDown: false,
+	speed: 3.5
 }
 let fruit = {
 	x: Math.random() * cnv.width - 30, y: Math.random() * cnv.height - 30,
@@ -29,10 +29,13 @@ function draw() {
 	ctx.fillText(`Pontuação: ${pontuation}`, 10, 40)
 }
 function update() {
-	if(person.wUp && !person.wDown) { person.y -= 3 }
-	else if(!person.wUp && person.wDown) { person.y += 3 }
-	if(person.wLeft && !person.wRight) { person.x -= 3 }
-	else if(!person.wLeft && person.wRight) { person.x += 3 }
+	person.x = Math.max(0, Math.min(person.x, cnv.width - person.w))
+	person.y = Math.max(0, Math.min(person.y, cnv.height - person.h))
+
+	if(person.wUp && !person.wDown) { person.y -= person.speed }
+	else if(!person.wUp && person.wDown) { person.y += person.speed }
+	if(person.wLeft && !person.wRight) { person.x -= person.speed }
+	else if(!person.wLeft && person.wRight) { person.x += person.speed }
 	
 	if((person.x+person.w>=fruit.x && person.x<=fruit.x+fruit.w)&&(person.y+person.h>=fruit.y && person.y<=fruit.y+fruit.h)) {
 		if(!fruit.hiper) {
